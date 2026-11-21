@@ -18,6 +18,9 @@ debug = true
 source-lines = true # required by test coverage
 log-level = "debug"
 log-external = true
+# Experimental BLS12-381 validator signing (community firmware PoC): enabled by
+# default in emulator builds so test presets pick it up; disable with --bls false.
+bls = true
 
 [[defaults]]
 when = { emulator = false }

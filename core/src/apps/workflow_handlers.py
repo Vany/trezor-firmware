@@ -175,6 +175,13 @@ def _find_message_handler_module(msg_type: int) -> str:
         if msg_type == MessageType.EthereumSignTypedData:
             return "apps.ethereum.sign_typed_data"
 
+        # eth2 (experimental BLS12-381 validator signing, community firmware PoC)
+        if utils.USE_BLS:
+            if msg_type == MessageType.Eth2GetPublicKey:
+                return "apps.eth2.get_public_key"
+            if msg_type == MessageType.Eth2SignRoot:
+                return "apps.eth2.sign_root"
+
         # monero
         if msg_type == MessageType.MoneroGetAddress:
             return "apps.monero.get_address"

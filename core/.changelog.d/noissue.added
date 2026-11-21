@@ -1,0 +1,1 @@
+Add experimental BLS12-381 Ethereum validator signing (EIP-2333/2334 key derivation, signing-root signatures behind the `bls` build feature, enabled by default in emulator builds only).

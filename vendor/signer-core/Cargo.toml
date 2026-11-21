@@ -1,0 +1,22 @@
+[package]
+name = "signer-core"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/Vany/signer-router"
+description = "no_std core shared by the signer-router and hardware wallet firmware: SSZ signing roots, EIP-3076 slashing protection, EIP-2333/2334 key derivation, BLS12-381 signing"
+
+[features]
+default = ["bls"]
+# BLS12-381 signing via blst (min_pk). blst itself compiles as no_std
+# (`#![cfg_attr(not(feature = "std"), no_std)]`, no std feature exists), but
+# its build script compiles C and links libc, so bare-metal targets need a C
+# toolchain for that target. Disable this feature to build without it.
+bls = ["dep:blst"]
+
+[dependencies]
+sha2 = { version = "0.10", default-features = false }
+hmac = { version = "0.12", default-features = false }
+zeroize = { version = "1", default-features = false }
+blst = { version = "0.3", optional = true }
+

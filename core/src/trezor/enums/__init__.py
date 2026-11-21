@@ -758,3 +758,7 @@ if TYPE_CHECKING:
         ExtAppDataChunkAck = 9207
         ExtAppMessage = 9208
         ExtAppResponse = 9209
+        Eth2GetPublicKey = 9800
+        Eth2PublicKey = 9801
+        Eth2SignRoot = 9802
+        Eth2Signature = 9803

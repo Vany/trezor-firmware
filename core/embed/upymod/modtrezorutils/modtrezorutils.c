@@ -899,6 +899,8 @@ static const mp_obj_tuple_t mod_trezorutils_version_obj = {
 /// """Whether K1N1 is supported."""
 /// USE_AES_GCM: bool
 /// """Whether the AES-GCM is supported."""
+/// USE_BLS: bool
+/// """Whether experimental BLS12-381 validator signing is supported."""
 /// USE_WARD: bool
 /// """Whether WARD is supported."""
 /// MODEL: str
@@ -1037,6 +1039,11 @@ static const mp_rom_map_elem_t mp_module_trezorutils_globals_table[] = {
     {MP_ROM_QSTR(MP_QSTR_USE_AES_GCM), mp_const_true},
 #else
     {MP_ROM_QSTR(MP_QSTR_USE_AES_GCM), mp_const_false},
+#endif
+#if USE_BLS
+    {MP_ROM_QSTR(MP_QSTR_USE_BLS), mp_const_true},
+#else
+    {MP_ROM_QSTR(MP_QSTR_USE_BLS), mp_const_false},
 #endif
 #if USE_WARD
     {MP_ROM_QSTR(MP_QSTR_USE_WARD), mp_const_true},

@@ -72,6 +72,10 @@ fn main() -> Result<()> {
             lib.add_define("USE_MINISCRIPT", Some("1"));
         }
 
+        if cfg!(feature = "bls") {
+            lib.add_define("USE_BLS", Some("1"));
+        }
+
         if cfg!(feature = "tracked_allocator") {
             lib.add_define("USE_TRACKED_ALLOCATOR", Some("1"));
         }
@@ -957,6 +961,7 @@ impl<'a> MpyBuilder<'a> {
 
         let backlight = py_bool(cfg!(feature = "backlight"));
         let ble = py_bool(cfg!(feature = "ble"));
+        let bls = py_bool(cfg!(feature = "bls"));
         let btc_only = py_bool(cfg!(not(feature = "universal_fw")));
         let button = py_bool(cfg!(feature = "button"));
         let emulator = py_bool(cfg!(feature = "emulator"));
@@ -986,6 +991,7 @@ impl<'a> MpyBuilder<'a> {
             format!(r"s/utils\.EMULATOR/{emulator}/g"),
             format!(r"s/utils\.USE_BACKLIGHT/{backlight}/g"),
             format!(r"s/utils\.USE_BLE/{ble}/g"),
+            format!(r"s/utils\.USE_BLS/{bls}/g"),
             format!(r"s/utils\.USE_BUTTON/{button}/g"),
             format!(r"s/utils\.USE_HAPTIC/{haptic}/g"),
             format!(r"s/utils\.USE_K1N1/{k1n1}/g"),

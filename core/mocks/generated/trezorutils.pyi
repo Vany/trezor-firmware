@@ -296,6 +296,8 @@ USE_K1N1: bool
 """Whether K1N1 is supported."""
 USE_AES_GCM: bool
 """Whether the AES-GCM is supported."""
+USE_BLS: bool
+"""Whether experimental BLS12-381 validator signing is supported."""
 USE_WARD: bool
 """Whether WARD is supported."""
 MODEL: str

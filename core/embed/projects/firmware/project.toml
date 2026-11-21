@@ -59,6 +59,7 @@ split_part2_sections = [".flash2"]
 asan                          = { true = ["asan"] }
 apps                          = { true = ["app_loading"] }
 benchmark                     = { true = ["benchmark"] }
+bls                           = { true = ["bls"] }
 block-on-vcp                  = { true = ["block_on_vcp"] }
 bootloader-devel              = { true = ["bootloader_devel"] }
 btc-only                      = { false = ["universal_fw"] }

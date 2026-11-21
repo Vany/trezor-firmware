@@ -168,6 +168,13 @@ options:
     when: component(firmware)
     type: checkbox
 
+  - id: bls
+    name: BLS12-381 Validator Signing
+    description: Enables experimental BLS12-381 validator signing.
+    group: Features
+    when: component(firmware)
+    type: checkbox
+
   - id: ward
     name: WARD Support
     description: Enables experimental WARD support.

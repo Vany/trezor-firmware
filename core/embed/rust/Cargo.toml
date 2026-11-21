@@ -28,6 +28,7 @@ num-derive.workspace = true
 num-traits.workspace = true
 pareen.workspace = true
 qrcodegen-no-heap.workspace = true
+signer-core = { workspace = true, optional = true }
 spin.workspace = true
 static-alloc.workspace = true
 trezor-thp = { workspace = true, optional = true }
@@ -56,6 +57,7 @@ upymod = { workspace = true, optional = true }
 app_loading = []
 backlight = []
 ble = []
+bls = ["dep:signer-core", "dep:zeroize"]
 boot_ucb = []
 bootloader = []
 button = []
@@ -140,6 +142,7 @@ test = [
     "upymod/universal_fw",
 
     "backlight",
+    "bls",
     "button",
     "crypto",
     "dbg_console",

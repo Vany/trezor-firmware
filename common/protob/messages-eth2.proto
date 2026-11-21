@@ -1,0 +1,54 @@
+syntax = "proto2";
+package hw.trezor.messages.eth2;
+
+import "options.proto";
+
+// Sugar for easier handling in Java
+option java_outer_classname = "TrezorMessageEth2";
+option java_package = "com.satoshilabs.trezor.lib.protobuf";
+
+// EXPERIMENTAL community-firmware messages for Ethereum consensus (ETH2)
+// validator signing. Not part of the stable Trezor API; IDs in the
+// experimental 9800+ range.
+
+/**
+ * Request: Ask device for the BLS12-381 public key of the Ethereum validator
+ * signing key derived from the device seed via EIP-2333/EIP-2334
+ * (path m/12381/3600/validator_index/0/0)
+ * @start
+ * @next Eth2PublicKey
+ * @next Failure
+ */
+message Eth2GetPublicKey {
+    required uint32 validator_index = 1;  // validator account index of the EIP-2334 path
+}
+
+/**
+ * Response: Contains the 48-byte compressed BLS12-381 public key (min_pk) of the validator signing key
+ * @end
+ */
+message Eth2PublicKey {
+    required bytes pubkey = 1;  // 48-byte compressed G1 point
+}
+
+/**
+ * Request: Ask device to sign a 32-byte consensus signing root with the
+ * validator signing key derived from the device seed
+ * (path m/12381/3600/validator_index/0/0)
+ * @start
+ * @next Eth2Signature
+ * @next Failure
+ */
+message Eth2SignRoot {
+    required uint32 validator_index = 1;  // validator account index of the EIP-2334 path
+    required bytes signing_root = 2;      // 32-byte SSZ signing root (already includes the domain)
+    optional uint32 domain_type = 3;      // first four bytes of the domain (reserved for slashing-protection checks)
+}
+
+/**
+ * Response: Contains the 96-byte compressed BLS12-381 signature over the signing root
+ * @end
+ */
+message Eth2Signature {
+    required bytes signature = 1;  // 96-byte compressed G2 point
+}

@@ -42,6 +42,7 @@ class SessionCache(DataCache):
                 96,  # APP_CARDANO_ICARUS_TREZOR_SECRET
                 0,  # APP_MONERO_LIVE_REFRESH
                 4 + 4,  # APP_EXTAPP_IDS
+                0,  # APP_ETH2_SIGNING_CONFIRMED
             )
         self.last_usage = 0
         super().__init__()

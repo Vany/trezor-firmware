@@ -821,6 +821,10 @@ class MessageType(IntEnum):
     ExtAppDataChunkAck = 9207
     ExtAppMessage = 9208
     ExtAppResponse = 9209
+    Eth2GetPublicKey = 9800
+    Eth2PublicKey = 9801
+    Eth2SignRoot = 9802
+    Eth2Signature = 9803
 
 
 class BenchmarkListNames(protobuf.MessageType):
@@ -5044,6 +5048,68 @@ class EthereumERC7730PathStep(protobuf.MessageType):
         self.each = each
         self.slice_start = slice_start
         self.slice_end = slice_end
+
+
+class Eth2GetPublicKey(protobuf.MessageType):
+    MESSAGE_WIRE_TYPE = 9800
+    FIELDS = {
+        1: protobuf.Field("validator_index", "uint32", repeated=False, required=True),
+    }
+
+    def __init__(
+        self,
+        *,
+        validator_index: int,
+    ) -> None:
+        self.validator_index = validator_index
+
+
+class Eth2PublicKey(protobuf.MessageType):
+    MESSAGE_WIRE_TYPE = 9801
+    FIELDS = {
+        1: protobuf.Field("pubkey", "bytes", repeated=False, required=True),
+    }
+
+    def __init__(
+        self,
+        *,
+        pubkey: bytes,
+    ) -> None:
+        self.pubkey = pubkey
+
+
+class Eth2SignRoot(protobuf.MessageType):
+    MESSAGE_WIRE_TYPE = 9802
+    FIELDS = {
+        1: protobuf.Field("validator_index", "uint32", repeated=False, required=True),
+        2: protobuf.Field("signing_root", "bytes", repeated=False, required=True),
+        3: protobuf.Field("domain_type", "uint32", repeated=False, required=False, default=None),
+    }
+
+    def __init__(
+        self,
+        *,
+        validator_index: int,
+        signing_root: bytes,
+        domain_type: int | None = None,
+    ) -> None:
+        self.validator_index = validator_index
+        self.signing_root = signing_root
+        self.domain_type = domain_type
+
+
+class Eth2Signature(protobuf.MessageType):
+    MESSAGE_WIRE_TYPE = 9803
+    FIELDS = {
+        1: protobuf.Field("signature", "bytes", repeated=False, required=True),
+    }
+
+    def __init__(
+        self,
+        *,
+        signature: bytes,
+    ) -> None:
+        self.signature = signature
 
 
 class EthereumGetPublicKey(protobuf.MessageType):

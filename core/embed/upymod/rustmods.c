@@ -56,6 +56,10 @@ MP_REGISTER_MODULE(MP_QSTR_trezorlog, mp_module_trezorlog);
 MP_REGISTER_MODULE(MP_QSTR_trezorminiscript, mp_module_trezorminiscript);
 #endif
 
+#ifdef USE_BLS
+MP_REGISTER_MODULE(MP_QSTR_trezorbls, mp_module_trezorbls);
+#endif
+
 #ifdef USE_WARD
 MP_REGISTER_MODULE(MP_QSTR_trezorward, mp_module_trezorward);
 #endif

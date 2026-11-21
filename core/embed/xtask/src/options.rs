@@ -221,6 +221,10 @@ build_options! {
     #[arg(long, num_args = 0..=1, default_missing_value = "true")]
     map miniscript: bool,
 
+    /// Experimental BLS12-381 validator signing.
+    #[arg(long, num_args = 0..=1, default_missing_value = "true")]
+    map bls: bool,
+
     /// Experimental WARD support.
     #[arg(long, num_args = 0..=1, default_missing_value = "true")]
     map ward: bool,

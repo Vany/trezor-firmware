@@ -429,4 +429,11 @@ enum MessageType {
     MessageType_ExtAppDataChunkAck = 9207 [(wire_in) = true];
     MessageType_ExtAppMessage = 9208 [(wire_in) = true];
     MessageType_ExtAppResponse = 9209 [(wire_out) = true];
+
+    // Ethereum consensus (ETH2) validator signing - experimental, community
+    // firmware feature, not part of the stable API
+    MessageType_Eth2GetPublicKey = 9800 [(wire_in) = true];
+    MessageType_Eth2PublicKey = 9801 [(wire_out) = true];
+    MessageType_Eth2SignRoot = 9802 [(wire_in) = true];
+    MessageType_Eth2Signature = 9803 [(wire_out) = true];
 }

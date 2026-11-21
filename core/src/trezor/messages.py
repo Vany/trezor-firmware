@@ -3549,6 +3549,66 @@ if TYPE_CHECKING:
         def is_type_of(cls, msg: Any) -> TypeGuard["EthereumERC7730PathStep"]:
             return isinstance(msg, cls)
 
+    class Eth2GetPublicKey(protobuf.MessageType):
+        validator_index: "int"
+
+        def __init__(
+            self,
+            *,
+            validator_index: "int",
+        ) -> None:
+            pass
+
+        @classmethod
+        def is_type_of(cls, msg: Any) -> TypeGuard["Eth2GetPublicKey"]:
+            return isinstance(msg, cls)
+
+    class Eth2PublicKey(protobuf.MessageType):
+        pubkey: "AnyBytes"
+
+        def __init__(
+            self,
+            *,
+            pubkey: "AnyBytes",
+        ) -> None:
+            pass
+
+        @classmethod
+        def is_type_of(cls, msg: Any) -> TypeGuard["Eth2PublicKey"]:
+            return isinstance(msg, cls)
+
+    class Eth2SignRoot(protobuf.MessageType):
+        validator_index: "int"
+        signing_root: "AnyBytes"
+        domain_type: "int | None"
+
+        def __init__(
+            self,
+            *,
+            validator_index: "int",
+            signing_root: "AnyBytes",
+            domain_type: "int | None" = None,
+        ) -> None:
+            pass
+
+        @classmethod
+        def is_type_of(cls, msg: Any) -> TypeGuard["Eth2SignRoot"]:
+            return isinstance(msg, cls)
+
+    class Eth2Signature(protobuf.MessageType):
+        signature: "AnyBytes"
+
+        def __init__(
+            self,
+            *,
+            signature: "AnyBytes",
+        ) -> None:
+            pass
+
+        @classmethod
+        def is_type_of(cls, msg: Any) -> TypeGuard["Eth2Signature"]:
+            return isinstance(msg, cls)
+
     class EthereumGetPublicKey(protobuf.MessageType):
         address_n: "list[int]"
         show_display: "bool | None"

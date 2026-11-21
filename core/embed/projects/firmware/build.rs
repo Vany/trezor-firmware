@@ -1,6 +1,12 @@
 use xbuild::{CLibrary, Result, bail_unsupported};
 
 fn main() -> Result<()> {
+    // Experimental BLS (signer-core + blst) pulls in liballoc, whose prebuilt
+    // rlib references _Unwind_Resume; the emulator links libgcc_s for it, the
+    // same way the ASAN build does. Bare-metal builds use panic=abort.
+    if cfg!(all(feature = "bls", feature = "emulator")) {
+        println!("cargo:rustc-link-arg=-lgcc_s");
+    }
     xbuild::build_and_link("firmware", |lib| {
         lib.import_lib("io")?;
         lib.import_lib("upymod")?;

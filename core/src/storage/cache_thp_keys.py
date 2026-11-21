@@ -18,3 +18,4 @@ if utils.USE_THP:
         APP_CARDANO_ICARUS_TREZOR_SECRET = const(10)
         APP_MONERO_LIVE_REFRESH = const(11)
         APP_EXTAPP_IDS = const(12)
+        APP_ETH2_SIGNING_CONFIRMED = const(13)  # experimental BLS (USE_BLS)

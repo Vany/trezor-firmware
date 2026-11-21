@@ -642,6 +642,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_prompt_title;
   MP_QSTR_pubkey;
   MP_QSTR_pubkey_qr;
+  MP_QSTR_public_key;
   MP_QSTR_qr_title;
   MP_QSTR_read;
   MP_QSTR_reboot_to_bootloader__restart;
@@ -942,6 +943,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_touch_event;
   MP_QSTR_trace;
   MP_QSTR_trezorble;
+  MP_QSTR_trezorbls;
   MP_QSTR_trezorlog;
   MP_QSTR_trezorminiscript;
   MP_QSTR_trezorproto;
